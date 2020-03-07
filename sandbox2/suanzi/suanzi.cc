@@ -21,51 +21,65 @@ int main(int argc, char*argv[])
 
 	Mat image = imread(image_name,IMREAD_GRAYSCALE);
 
-	int histsize = 256;
+	Mat can1,sob1,laps1,pre1,abslaps1;
 
-	float range[] = { 0,255 };
-
-	const float*histRanges = { range };
+/*canny*/
 	
-	Mat hist;
+	Canny(image, can1, 150, 100,3 ); 
 
-	Mat result;
+	namedWindow("canny",WINDOW_NORMAL);
 
-	cv::calcHist(&image, 1, 0, Mat(), hist, 1, &histsize, &histRanges, true, false);
+	imshow("canny",can1);
 
-	int hist_h = 400;
+/* sobel*/
 
-	int hist_w = 512;
+	Mat grad_x, grad_y;  
 
-	int bin_w = hist_w / histsize;
+    	Mat abs_grad_x, abs_grad_y;
 
-	Mat histImage(hist_w, hist_h, CV_8UC3, Scalar(0, 0, 0));
+	Sobel(image, grad_x, CV_16S, 1, 0, 3, 1, 1, BORDER_DEFAULT ); 
 
-	normalize(hist, hist, 0, hist_h, NORM_MINMAX, -1, Mat());
+	convertScaleAbs( grad_x, abs_grad_x );
 
-for (int i = 1; i < histsize; i++)
-	{
-		
-	line(histImage, Point((i - 1)*bin_w, hist_h - cvRound(hist.at<float>(i - 1))),
+	Sobel(image, grad_y, CV_16S, 0, 1, 3, 1, 1, BORDER_DEFAULT ); 
+ 
+    	convertScaleAbs( grad_y, abs_grad_y );  
 
-	Point((i)*bin_w, hist_h - cvRound(hist.at<float>(i))), Scalar(255, 255, 255), 2, CV_AA);
-		
-	}
+	addWeighted( abs_grad_x, 0.5, abs_grad_y, 0.5, 0, sob1 );  
+    
+	namedWindow("sobel",WINDOW_NORMAL);
 
-	imshow("output", histImage);
+	imshow("sobel", sob1);
 
-	namedWindow("Display Window",WINDOW_NORMAL);
+/*Laplacian*/
 
-	imshow("Display Window",image);
 	
+	Laplacian(image, laps1, CV_16S, 3, 1, 0, BORDER_DEFAULT);
 	
-	result = image.clone();
+	convertScaleAbs(laps1, abslaps1);
 
-	threshold(image, result, 50, 220,CV_THRESH_BINARY);
+	namedWindow("Laplacian",WINDOW_NORMAL);
 
-	namedWindow("二值化图像");
+	imshow("Laplacian", abslaps1);
 
-	imshow("二值化图像", result);
+/*pretitt*/
+
+	
+	Mat imgx,imgy;
+
+	Mat kernel_x = (Mat_<int>(3, 3) << -1, -1, -1, 0, 0, 0, 1, 1, 1);
+
+	filter2D(image, imgx, -1, kernel_x, Point(-1, -1), 0, 0);
+
+	Mat kernel_y = (Mat_<int>(3, 3) << -1, 0, 1, -1, 0, 1, -1, 0, 1);
+
+	filter2D(image, imgy, -1, kernel_y, Point(-1, -1), 0, 0);
+
+	addWeighted( imgx, 0.5, imgy, 0.5, 0, pre1 );
+
+	namedWindow("pretitt",WINDOW_NORMAL);
+
+	imshow("pretitt", pre1);
 
 	waitKey(0);
 

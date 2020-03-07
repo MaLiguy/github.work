@@ -14,7 +14,7 @@ find_package (OpenCV REQUIRED)
 include_directories (${OpenCV_INCLUDE_DIRS})
 
 # 添加项目的输出程序和所需源代码
-add_executable (suanzi suanzie.cc)
+add_executable (suanzi suanzi.cc)
 
 # 将 OpenCV 库 链 接 到 程 序 中
 target_link_libraries (suanzi ${OpenCV_LIBS})
