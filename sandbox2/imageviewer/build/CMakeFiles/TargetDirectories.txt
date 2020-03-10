@@ -1,0 +1,4 @@
+/home/hongqingxiang/Workspace/github.work/sandbox2/imageviewer/build/CMakeFiles/edit_cache.dir
+/home/hongqingxiang/Workspace/github.work/sandbox2/imageviewer/build/CMakeFiles/rebuild_cache.dir
+/home/hongqingxiang/Workspace/github.work/sandbox2/imageviewer/build/CMakeFiles/imageviewer.dir
+/home/hongqingxiang/Workspace/github.work/sandbox2/imageviewer/build/CMakeFiles/imageviewer_automoc.dir

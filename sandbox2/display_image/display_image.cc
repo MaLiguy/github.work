@@ -29,7 +29,7 @@ int main(int argc, char*argv[])
 	
 	Mat hist;
 
-	Mat result;
+	Mat result,result1,result2;
 
 	cv::calcHist(&image, 1, 0, Mat(), hist, 1, &histsize, &histRanges, true, false);
 
@@ -58,14 +58,18 @@ for (int i = 1; i < histsize; i++)
 
 	imshow("Display Window",image);
 	
-	
-	result = image.clone();
 
 	threshold(image, result, 50, 220,CV_THRESH_BINARY);
 
-	namedWindow("二值化图像");
+	adaptiveThreshold(image,result2,255,CV_ADAPTIVE_THRESH_MEAN_C,CV_THRESH_BINARY_INV,5,10);
+
+	namedWindow("二值化图像",WINDOW_NORMAL);
 
 	imshow("二值化图像", result);
+
+	namedWindow("自适应二值化图像",WINDOW_NORMAL);
+
+	imshow("自适应二值化图像", result2);
 
 	waitKey(0);
 

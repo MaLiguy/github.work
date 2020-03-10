@@ -1,4 +1,4 @@
-# Install script for directory: /home/hongqingxiang/Workspace/sandbox2/display_image
+# Install script for directory: /home/hongqingxiang/Workspace/github.work/sandbox2/display_image
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/hongqingxiang/Workspace/sandbox2/display_image/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/hongqingxiang/Workspace/github.work/sandbox2/display_image/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
