@@ -1,0 +1,4 @@
+/home/hongqingxiang/Workspace/github.work/sandbox2/QT/QT1/lab1/build/CMakeFiles/edit_cache.dir
+/home/hongqingxiang/Workspace/github.work/sandbox2/QT/QT1/lab1/build/CMakeFiles/rebuild_cache.dir
+/home/hongqingxiang/Workspace/github.work/sandbox2/QT/QT1/lab1/build/CMakeFiles/lab1.dir
+/home/hongqingxiang/Workspace/github.work/sandbox2/QT/QT1/lab1/build/CMakeFiles/lab1_automoc.dir

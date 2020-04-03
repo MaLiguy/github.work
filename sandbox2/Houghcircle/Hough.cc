@@ -1,33 +1,53 @@
-#include <opencv2/opencv.hpp>
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
 #include <iostream>
-#include <math.h>
+#include <stdio.h>
 
 using namespace cv;
-using namespace std;
+using namespace std;	
 
 
+/** @function main */
 int main(int argc, char** argv)
 {
-    Mat src, src_gray;
-    src = imread("QQ.jpg");
-    char INPUT_TITLE[] = "input image";
-    imshow(INPUT_TITLE, src);
-    cvtColor(src, src_gray, COLOR_BGR2GRAY);
-    GaussianBlur(src_gray, src_gray, Size(9, 9), 2, 2);
+  Mat src, src_gray;
 
-    vector<Vec3f> circles;
-    HoughCircles(src_gray, circles, HOUGH_GRADIENT, 1.5, 10, 200, 100, 0, 0);
+  /// Read the image
+  src = imread( argv[1], 1 );
 
-    for (size_t i = 0; i < circles.size(); i++)
-    {
-        Point center(cvRound(circles[i][0]), cvRound(circles[i][1]));
-        int radius = cvRound(circles[i][2]);
-        circle(src, center, 3, Scalar(0, 255, 0), -1, 8, 0);
-        circle(src, center, radius, Scalar(155, 50, 255), 3, 8, 0);
-    }
-    imshow("效果图", src);
-    
-    waitKey(0);
-    return 0;
+  if( !src.data )
+    { return -1; }
 
-}
+  /// Convert it to gray
+  cvtColor( src, src_gray, CV_BGR2GRAY );
+
+  /// Reduce the noise so we avoid false circle detection
+  GaussianBlur( src_gray, src_gray, Size(9, 9), 2, 2 );
+
+  vector<Vec3f> circles;
+
+  
+  HoughCircles( src_gray, circles, CV_HOUGH_GRADIENT, 1, src_gray.rows/8, 200, 100, 0, 0 );/// Apply the Hough Transform to find the circles
+
+  /// Draw the circles detected
+  for( size_t i = 0; i < circles.size(); i++ )
+  {
+      Point center(cvRound(circles[i][0]), cvRound(circles[i][1]));
+	
+      int radius = cvRound(circles[i][2]);
+      // circle center
+      circle( src, center, 3, Scalar(0,255,0), -1, 8, 0 );
+      line(src,Point(center.x-5,center.y),Point(center.x+5,center.y),Scalar(0,0,255),3,CV_AA,0);
+      line(src,Point(center.x,center.y-5),Point(center.x,center.y+5),Scalar(0,0,255),3,CV_AA,0);
+     
+
+	// circle outline
+      circle( src, center, radius, Scalar(0,0,255), 3, 8, 0 );
+   }
+
+  /// Show your results
+  namedWindow( "Hough Circle Transform Demo", WINDOW_NORMAL );
+  imshow( "Hough Circle Transform Demo", src );
+
+  waitKey(0);
+  return 0;}

@@ -6,35 +6,84 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1217</width>
-    <height>581</height>
+    <width>459</width>
+    <height>337</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QGroupBox" name="groupBox">
+   <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>341</width>
-      <height>101</height>
+      <x>0</x>
+      <y>60</y>
+      <width>461</width>
+      <height>181</height>
      </rect>
     </property>
-    <property name="title">
-     <string>界面  LOG</string>
+    <property name="currentIndex">
+     <number>3</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Tab 1</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Tab 3</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>...</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Log 标题</string>
     </property>
    </widget>
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>230</y>
-      <width>256</width>
-      <height>192</height>
+      <x>260</x>
+      <y>10</y>
+      <width>191</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>电信172 洪庆祥 3170406050</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>260</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>提示信息</string>
     </property>
    </widget>
   </widget>
@@ -43,7 +92,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1217</width>
+     <width>459</width>
      <height>25</height>
     </rect>
    </property>

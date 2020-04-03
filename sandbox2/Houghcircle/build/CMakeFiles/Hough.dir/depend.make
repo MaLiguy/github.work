@@ -78,10 +78,12 @@ CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/flann/sampling.h
 CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/flann/saving.h
 CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/flann/timer.h
 CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/highgui.hpp
+CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/highgui/highgui.hpp
 CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/highgui/highgui_c.h
 CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/imgcodecs.hpp
 CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h
 CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/imgproc.hpp
+CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/imgproc/imgproc.hpp
 CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/imgproc/imgproc_c.h
 CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/imgproc/types_c.h
 CMakeFiles/Hough.dir/Hough.cc.o: /usr/local/include/opencv2/ml.hpp
